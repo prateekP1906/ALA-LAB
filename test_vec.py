@@ -5,13 +5,13 @@ from pathlib import Path
 
 sys.path.append(str(Path(__file__).resolve().parents[2]))
 
-from vec.vec import Vec as Vector
+from vec import Vec as Vector
 from w2v import get_word_vector, load_model
 
 class TestVector(unittest.TestCase):
 
     def test_mean_word(self):
-        model = load_model("../glove50/glove_50_fast.wordvectors")
+        model = load_model("glove50/glove_50_fast.wordvectors")
         raw_vec = get_word_vector(model, "india")
         v = Vector([float(x) for x in raw_vec])
 
@@ -20,7 +20,7 @@ class TestVector(unittest.TestCase):
         print(expected_mean, v.mean())
 
     def test_demean(self):
-        model = load_model("../glove50/glove_50_fast.wordvectors")
+        model = load_model("glove50/glove_50_fast.wordvectors")
         raw_vec = get_word_vector(model, "india")
         v = Vector([float(x) for x in raw_vec])
 
@@ -28,7 +28,7 @@ class TestVector(unittest.TestCase):
         print("Demean:", v.demean())
 
     def test_standard_deviation(self):
-        model = load_model("../glove50/glove_50_fast.wordvectors")
+        model = load_model("glove50/glove_50_fast.wordvectors")
         raw_vec = get_word_vector(model, "india")
         v = Vector([float(x) for x in raw_vec])
 
@@ -39,3 +39,6 @@ class TestVector(unittest.TestCase):
     
 if __name__ == "__main__":
     unittest.main()
+
+    
+
